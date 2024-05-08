@@ -1,22 +1,9 @@
 import React, { useState } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import Link from "next/link";
-import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Cross1Icon, CrossCircledIcon } from "@radix-ui/react-icons";
-import { Card } from "@/components/ui/card";
-import { removeFromCart, updateQtyInCart } from "@/redux/slice/cartSlice";
 import { CartSchema } from "@/schema/schema";
-import { useAppDispatch } from "@/redux/store";
 import {
   useManipulateQuantityMutation,
   useRemoveFromCartMutation,
@@ -52,12 +39,12 @@ const CartTable = ({ cart, updateCart }: CartProps) => {
             className="h-[170px] gap-2 my-2 md:my-2 lg:my-5 grid grid-cols-3"
           >
             <Image
-            src={productData.product.images[0]}
-            alt="pic"
-            width={100}
-            height={100}
-            className="rounded-md m-2 mx-4"
-          />
+              src={productData.product.images[0]}
+              alt="pic"
+              width={100}
+              height={100}
+              className="rounded-md m-2 mx-4"
+            />
             <div className="grid grid-cols-1 md:grid-cols-3  col-span-2">
               <div className="font-semibold pt-5 text-lg w-full h-[100px] pr-14 ">
                 <Link

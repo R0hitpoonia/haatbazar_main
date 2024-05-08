@@ -14,6 +14,7 @@ const initialState: IAuthState = {
     password: "",
     address: [],
     profilePhoto: "",
+    role: "user",
   },
 };
 

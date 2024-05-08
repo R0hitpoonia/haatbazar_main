@@ -42,18 +42,6 @@ const cartSlice = createSlice({
       state.gst = Math.round((4 / 100) * state.totalPrice + Number.EPSILON);
       state.payablePrice = state.totalPrice + state.deliveryCharges + state.gst;
     },
-    removeFromCart(state, action: PayloadAction<number>) {
-      const [removeFromCart, { isSuccess }] = useRemoveFromCartMutation();
-      state.totalQuantity =
-        state.totalQuantity - state.products[action.payload].quantity;
-      state.totalPrice -=
-        state.products[action.payload].product.price *
-        state.products[action.payload].quantity;
-      delete state.products[action.payload];
-      removeFromCart(action.payload);
-      if (isSuccess) {
-      }
-    },
     updateQtyInCart(state, action: PayloadAction<updateqty>) {
       const id: number = action.payload.id;
       const operation = action.payload.operation;
@@ -118,5 +106,5 @@ const cartSlice = createSlice({
 
 export default cartSlice.reducer;
 // Action creators
-export const { addToCart, removeFromCart, updateQtyInCart, setCart } =
+export const { addToCart, updateQtyInCart, setCart } =
   cartSlice.actions;

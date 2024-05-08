@@ -32,6 +32,7 @@ export const userApi = createApi({
               password: "",
               address: user.address,
               profilePhoto: user.profilePhoto,
+              role: user.role,
             }),
           );
           await queryFulfilled;
@@ -152,6 +153,7 @@ export const userApi = createApi({
               password: "",
               address: user.address,
               profilePhoto: user.profilePhoto,
+              role: user.role,
             }),
           );
         } catch (error) {

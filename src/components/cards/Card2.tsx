@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import BuyNowButton from "./BuyNowButton";
+// import BuyNowButton from "./BuyNowButton";
 import bs from "../../../../public/bs2.jpg";
 
 interface CardProps {

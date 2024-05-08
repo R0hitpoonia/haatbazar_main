@@ -22,7 +22,7 @@ const Cart = () => {
         paymentId: string;
         status: string;
       }> = [];
-      Ords.data.data.map((o) => {
+      Ords.data.data.map((o: any) => {
         tempOrder.push({
           orderId: o.orderId,
           cartId: o.cartId,

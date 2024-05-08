@@ -15,13 +15,17 @@ const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [color, setColor] = useState<string[]>([]);
 
-  const handlecolor = (id: string) => {
-    const checkBox = document.getElementById(id);
-    if (checkBox?.checked == true) {
-      setColor([...color, id]);
-    } else {
-      setColor(color.filter((cId) => cId != id));
-    }
+  const handleColor = (id: string) => {
+    // Toggle the presence of the ID in the color array
+    setColor((prevColor) => {
+      if (prevColor.includes(id)) {
+        // If the ID is already in the array, remove it
+        return prevColor.filter((cId) => cId !== id);
+      } else {
+        // If the ID is not in the array, add it
+        return [...prevColor, id];
+      }
+    });
   };
   const [addNewProduct, { isSuccess, isLoading, isError, data }] =
     useAddProductMutation();
@@ -132,9 +136,8 @@ const AddProduct = () => {
           id="black"
           name="black"
           value="#121212"
-          onClick={() => {
-            handlecolor("black");
-          }}
+          onChange={() => handleColor("black")}
+          checked={color.includes("black")}
         />
         <label htmlFor="black"> Black</label>
         <input
@@ -142,9 +145,8 @@ const AddProduct = () => {
           id="red"
           name="red"
           value="#ff0000"
-          onClick={() => {
-            handlecolor("red");
-          }}
+          onChange={() => handleColor("red")}
+          checked={color.includes("red")}
         />
         <label htmlFor="red"> Red</label>
         <input
@@ -152,9 +154,8 @@ const AddProduct = () => {
           id="blue"
           name="blue"
           value="#000dff"
-          onClick={() => {
-            handlecolor("blue");
-          }}
+          onChange={() => handleColor("blue")}
+          checked={color.includes("blue")}
         />
         <label htmlFor="blue"> Blue</label>
         <input
@@ -162,16 +163,13 @@ const AddProduct = () => {
           id="green"
           name="green"
           value="#faf600"
-          onClick={() => {
-            handlecolor("green");
-          }}
+          onChange={() => handleColor("green")}
+          checked={color.includes("green")}
         />
         <label htmlFor="green"> Green</label>
 
         <Button type="submit">Add Product</Button>
       </form>
-
-      
     </div>
   );
 };

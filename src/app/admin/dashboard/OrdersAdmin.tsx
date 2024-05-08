@@ -25,7 +25,7 @@ const OrdersAdmin = () => {
           paymentId: string;
           status: string;
         }> = [];
-        data.data.map((o) => {
+        data.data.map((o: any) => {
           tempOrder.push({
             orderId: o.orderId,
             cartId: o.cartId,

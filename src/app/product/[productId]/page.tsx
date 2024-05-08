@@ -3,8 +3,8 @@ import React, { Suspense } from "react";
 import Product from "./Product";
 import { useGetProductByIdQuery } from "@/redux/api/prductsApi";
 
-const ProductView = (productId: number) => {
-  const p = useGetProductByIdQuery(productId);
+const ProductView = ({ params }: { params: { productId: number } }) => {
+  const p = useGetProductByIdQuery(params.productId);
   if (p.isError) return <div>Error</div>;
   if (p.isSuccess) {
     return (

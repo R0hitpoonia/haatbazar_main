@@ -30,6 +30,7 @@ export const authSlice = createSlice({
       state.user.address = action.payload.address;
       state.user.profilePhoto = action.payload.profilePhoto;
       state.user.address = action.payload.address;
+      state.user.role = action.payload.role;
     },
   },
 });

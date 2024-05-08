@@ -3,18 +3,24 @@ import { useLazyGetUserQuery } from "@/redux/api/userApi";
 import { redirect } from "next/navigation";
 import { CardWrapper } from "../../../components/card-wrapper";
 import { LoginInner } from "./login-card-handler";
-import Link from "next/link";
 import { useEffect } from "react";
+import { useAppSelector } from "@/redux/store";
 
 function LoginPage() {
   const [getUser, { data, isSuccess }] = useLazyGetUserQuery();
+  const user = useAppSelector((state) => state.auth.user);
+
   useEffect(() => {
     getUser(null);
   }, []);
   if (isSuccess) {
-  }
-  if (data) {
-    redirect("/");
+    if (data) {
+      if (user?.role === "admin") {
+        redirect("/admin/dashboard");
+      } else {
+        redirect("/");
+      }
+    }
   } else {
     return (
       <div className="flex h-screen justify-center items-center">

@@ -42,6 +42,9 @@ export function ProfileButtonD() {
               <Link href={"/profile"}>My Profile</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
+              <Link href={"/orders"}>My Orders</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
               <Link href={"/logout"}>Logout</Link>
             </DropdownMenuItem>
           </>

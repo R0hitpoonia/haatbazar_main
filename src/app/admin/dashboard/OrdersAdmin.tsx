@@ -1,46 +1,47 @@
-import { useGetAllOrdersMutation } from "@/redux/api/adminApi";
 import React, { useEffect, useState } from "react";
+import Orders from "./Orders";
+import { useGetAllOrdersMutation } from "@/redux/api/adminApi";
+import { CartSchema } from "@/schema/schema";
 
 const OrdersAdmin = () => {
   const [orders, setOrders] = useState([]);
-  const [getAllOders, { isSuccess, isError, isLoading }] = useGetAllOrdersMutation();
+  const [getAllOders, { isSuccess, isError, isLoading, data }] =
+    useGetAllOrdersMutation();
+  const [order, setOrder] = useState<
+    Array<{
+      orderId: string;
+      cartId: CartSchema;
+      paymentId: string;
+      status: string;
+    }>
+  >([]);
   useEffect(() => {
-  getAllOders
-  }, [])
+    getAllOders(null);
+    if (isSuccess) {
+      if (data) {
+        const tempOrder: Array<{
+          orderId: string;
+          cartId: CartSchema;
+          paymentId: string;
+          status: string;
+        }> = [];
+        data.data.map((o) => {
+          tempOrder.push({
+            orderId: o.orderId,
+            cartId: o.cartId,
+            paymentId: o.paymentId,
+            status: o.status,
+          });
+        });
+        setOrder(tempOrder);
+      }
+    }
+  }, [data]);
   return (
-    <div className="w-[1200px] justify-center text-pale">
-      <div className="h-[720px] pr-14 overflow-auto no-scrollbar">
-        <ul className="">
-          {orders.map((order, index) => {
-            return (
-              <li
-                key={order.id}
-                className="p-6 border-b flex justify-center flex-row"
-              >
-                <div className="px-4">
-                  <span className="text-xl font-semibold ">{order.title}</span>
-                  <span className="block text-sm mt-2">
-                    Description : {order.desc}
-                  </span>
-                </div>
-                <div className="px-3">
-                  <span>Customer Name</span>
-                </div>
-                <div className="px-3">
-                  <span>Customer ID</span>
-                </div>
-                <div className="px-4">
-                  <span className="text-sm font-semibold p-3">
-                    Price : {order.price}
-                  </span>
-                  <span className="p-6">x {order.qty} </span>
-                </div>
-                <div className="px-3"></div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    <div className="flex flex-col">
+      <span className="text-center w-full text-3xl font-bold">Orders</span>
+      <div className="flex lg:flex-row flex-col py-5 px-3 gap-5 items-center justify-center"></div>
+      <Orders order={orders} />
     </div>
   );
 };

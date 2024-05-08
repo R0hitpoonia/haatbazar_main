@@ -16,7 +16,7 @@ const Cart = () => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
     setCart(cartfromredux);
-  }, [cart, cartfromredux]);
+  }, [cart, cartfromredux]) ;
 
   return (
     <div className="flex flex-col">

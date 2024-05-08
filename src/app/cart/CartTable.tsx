@@ -51,13 +51,13 @@ const CartTable = ({ cart, updateCart }: CartProps) => {
             key={productId}
             className="h-[170px] gap-2 my-2 md:my-2 lg:my-5 grid grid-cols-3"
           >
-            {/* <Image
+            <Image
             src={productData.product.images[0]}
             alt="pic"
             width={100}
             height={100}
             className="rounded-md m-2 mx-4"
-          /> */}
+          />
             <div className="grid grid-cols-1 md:grid-cols-3  col-span-2">
               <div className="font-semibold pt-5 text-lg w-full h-[100px] pr-14 ">
                 <Link

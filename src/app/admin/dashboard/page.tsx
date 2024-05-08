@@ -1,9 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashBoard from "./Dashboard";
 import AdminProducts from "./AdminProducts";
+import { useLazyGetUserQuery } from "@/redux/api/userApi";
+import { useAppSelector } from "@/redux/store";
+import { redirect } from "next/navigation";
 
 const Dashboard = () => {
+  const [getUser, { data, isSuccess }] = useLazyGetUserQuery();
+  const user = useAppSelector((state) => state.auth.user);
+  useEffect(() => {
+    getUser(null);
+  }, []);
+  if (isSuccess) {
+    if (data) {
+      if (user?.role !== "admin") {
+        redirect("/login");
+      }
+    }
+  }
   const [opion, setOpion] = useState("dashboard");
   return (
     <div className="flex flex-row gap-10 bg-brown">

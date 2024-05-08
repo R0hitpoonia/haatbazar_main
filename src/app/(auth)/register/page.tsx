@@ -4,16 +4,23 @@ import React, { useEffect } from "react";
 import { CardWrapper } from "../../../components/card-wrapper";
 import { RegisterInner } from "./register-handler";
 import { useLazyGetUserQuery } from "@/redux/api/userApi";
+import { useAppSelector } from "@/redux/store";
 
 const Register = () => {
   const [getUser, { data, isSuccess }] = useLazyGetUserQuery();
+  const user = useAppSelector((state) => state.auth.user);
+
   useEffect(() => {
     getUser(null);
   }, []);
   if (isSuccess) {
   }
   if (data) {
-    redirect("/profile");
+    if (user?.role === "admin") {
+      redirect("/admin/dashboard");
+    } else {
+      redirect("/");
+    }
   } else {
     return (
       <div className="flex h-screen justify-center items-center">

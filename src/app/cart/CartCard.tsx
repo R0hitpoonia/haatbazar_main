@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CartSchema } from "@/schema/schema";
+import Link from "next/link";
 
 interface props {
   cart: CartSchema;
@@ -45,7 +46,12 @@ const CartCard = ({ cart }: props) => {
       )}
 
       <CardFooter>
-        <Button className="w-full">Proceed to PAY.</Button>
+        <Link
+          href={"/makeOrder"}
+          className="w-full text-center my-2 rounded-sm bg-brown text-pale"
+        >
+          Proceed to PAY.
+        </Link>
       </CardFooter>
     </Card>
   );

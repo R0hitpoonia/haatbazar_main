@@ -7,6 +7,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu";
+import { Avatar } from '../ui/avatar';
 
 const SearchBar = () => {
   return (

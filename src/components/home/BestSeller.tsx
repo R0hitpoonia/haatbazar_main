@@ -56,7 +56,7 @@ const Bestseller = () => {
                 );
               })}
             </CarouselContent>
-            <div className="flex justify-between px-4 absolute w-[90%] top-1/2">
+            <div className="justify-between px-4 absolute w-[90%] top-1/2 hidden md:flex">
               <CarouselPrevious />
               <CarouselNext />
             </div>

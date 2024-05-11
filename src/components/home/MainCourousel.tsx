@@ -58,10 +58,8 @@ const MainCourousel = () => {
           </div>
         </CarouselItem>
       </CarouselContent>
-      <div className="flex justify-between px-4 absolute w-full top-1/2">
-        <CarouselPrevious className="bg-slate-50/25" />
-        <CarouselNext className="bg-slate-50/25" />
-      </div>
+      <CarouselPrevious className="bg-slate-50/25 left-16 hidden md:flex" />
+      <CarouselNext className="bg-slate-50/25 right-16 hidden md:flex" />
     </Carousel>
   );
 };

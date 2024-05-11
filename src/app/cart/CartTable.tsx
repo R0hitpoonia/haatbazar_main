@@ -39,7 +39,7 @@ const CartTable = ({ cart, updateCart }: CartProps) => {
             className="h-[170px] gap-2 my-2 md:my-2 lg:my-5 grid grid-cols-3"
           >
             <Image
-              src={productData.product.images[0]}
+              src="/cat2.jpg"
               alt="pic"
               width={100}
               height={100}

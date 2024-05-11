@@ -28,7 +28,7 @@ const Logout = () => {
         address: [],
         password: "",
         profilePhoto: "",
-        role: "user",
+        role: "none",
       }),
     );
     dispatch(

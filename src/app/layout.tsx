@@ -23,9 +23,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <ReduxProvider>
           <Navbar />
-          <div className="flex justify-between max-w-[1200px] mx-auto ">
+          
             {children}
-          </div>
+
           <Foter />
           <Toaster />
         </ReduxProvider>

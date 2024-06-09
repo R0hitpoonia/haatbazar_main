@@ -9,11 +9,12 @@ import {
 import Card1 from "../cards/Card1";
 import { useGetBestSellerQuery } from "@/redux/api/prductsApi";
 import { ProductSchema } from "@/schema/schema";
+import PageLoader from "../Loader/PageLoader";
 
 const Bestseller = () => {
   const temproducts = useGetBestSellerQuery(null);
   if (temproducts.isError) return <>Network Error</>;
-  if (temproducts.isLoading) return <>Loading</>;
+  if (temproducts.isLoading) return <PageLoader />;
   if (temproducts.isSuccess) {
     if (temproducts.data) {
       const product: ProductSchema[] = [];

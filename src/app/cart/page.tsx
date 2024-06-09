@@ -18,7 +18,7 @@ const Cart = () => {
 
   return (
     <div className="flex justify-between max-w-[1200px] mx-auto ">
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         <span className="text-center w-full text-3xl font-bold">CART</span>
         <div className="flex lg:flex-row flex-col py-5 px-3 gap-5 items-center justify-center">
           <CartTable cart={cart} updateCart={updateCart} />
